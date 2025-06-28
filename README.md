@@ -24,3 +24,25 @@ read -p "Enter a number: " num
 
 ![](./img/Pasted%20image%20(4).png)
 
+### script executed without without error.
+
+### The 'read' command stores any input typed by the user to the variable 'num'. Nothing else happens after that as we see in the snap shot above.
+
+### Update the script by adding an echo statement.
+
+```bash
+#!/bin/bash
+read -p "Enter a number: " num 
+echo "You have entered the number $num"
+```
+![](./img/Pasted%20image%20(5).png)
+
+### Execute the script again to see the result of the changes made. $num in the script will display whatever was saved to 'num' variable.
+
+![](./img/Pasted%20image%20(6).png)
+
+## if statement.
+
+
+
+
