@@ -45,7 +45,7 @@ echo "You have entered the number $num"
 ### The if-else construct allows conditional execution based on test conditions. Example syntax:
 ```bash
 number = 10
-if [ number -lt 0 ] 
+if [ number -lt 10 ] 
 then
     echo "number is lesser than 10"
 else 
@@ -63,9 +63,27 @@ if [ $num -gt 0 ]; then
     echo "The number is positive."
 fi
 ```
+![](./img/Pasted%20image%20(7).png)
+                 
+### `$num` will reference the value of the variable 'num' entered by the user.
 
+### `-gt` keyword is the operator that will perform the comparism with the variable $num and condition.
 
+### Lets run the code to see the result.
 
+![](./img/Pasted%20image%20(8).png)
 
+### And indeed the conditional block executed properly as desired.
 
+### `elif` statement is used to check for multiple conditions in the script. It is actaully a combination of 'else and if' keywords'
 
+```bash
+number = 10
+if [ number -lt 10 ] 
+then
+    echo "number is lesser than 10"
+elif [ number -ge 10 ] 
+then
+    echo "number is greater or equal to 10"
+fi
+```
