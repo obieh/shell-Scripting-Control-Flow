@@ -87,3 +87,20 @@ then
     echo "number is greater or equal to 10"
 fi
 ```
+
+* The initial `if [ $num -gt 0 ] compares num with 0. If this condition is met that 'num' is greater than 0. the scripts print to screen "The number is positive" then terminates the program.
+
+* If the initial condition is not met then the script moves further to check for the secod condition `elif [ $num -lt 0 ]`.
+
+### Add the eilf block
+
+![](./img/Pasted%20image%20(9).png)
+
+### Run the script, this time enter a number lower than zero.
+
+![](./img/Pasted%20image%20(10).png)
+
+### The second condition was met and the script executed as desired.
+
+## Loops
+Loops provides for the iteration of list od items or range of numbers.
