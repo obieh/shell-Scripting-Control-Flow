@@ -1,4 +1,4 @@
-# shell-Scripting-Control-Flow
+# Shell-Scripting-Control-Flow
 ## This project will demonstrate the use of control flows in shell scripts to perform tasks
 
 ## Control flow
@@ -41,7 +41,19 @@ echo "You have entered the number $num"
 
 ![](./img/Pasted%20image%20(6).png)
 
-## if statement.
+## If-Else statement.
+### The if-else construct allows conditional execution based on test conditions. Example syntax:
+```bash
+number = 10
+if [ number -lt 0 ] 
+then
+    echo "number is lesser than 10"
+else 
+    echo "number is greater or equal to 10"
+fi
+```
+*
+
 
 
 
