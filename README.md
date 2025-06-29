@@ -52,7 +52,18 @@ else
     echo "number is greater or equal to 10"
 fi
 ```
-*
+* The 'if' keyword begins the conditinal statement. The condition is enclosed in sqaure brackets [ ]. The 'else' keyword intruduces the alternative block and the statement ends with 'fi' which is 'if' spelt backward, marking the end of the if block.
+
+* Add if-else block to the control_flow.sh
+* Run `nano control_flow.sh`
+* Add the following code block to the script
+
+```bash
+if [ $num -gt 0 ]; then
+    echo "The number is positive."
+fi
+```
+
 
 
 
