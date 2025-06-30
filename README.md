@@ -121,6 +121,63 @@ for i in 1 2 3 4 5  # 'i' takes each value in this list
 do
     echo "Number: $i"  # Print the current number
 done
-```
+# =====================================
+# while loop
+#!/bin/bash
+# Monitor disk usage and alert when it exceeds threshold
+threshold=90
 
+while true; do
+    disk_usage=$(df / | awk 'NR==2 {print $5}' | sed 's/%//')
+    
+    if [ "$disk_usage" -gt "$threshold" ]; then
+        echo "WARNING: Disk usage is ${disk_usage}%"
+        # Send alert email or notification
+        break
+    else
+        echo "Disk usage OK: ${disk_usage}%"
+    fi
+    
+    sleep 300  # Check every 5 minutes
+done
+
+```
+* Create a script for 'for' loop. Give user execute permission and execute script.
+
+* Run `nano for_loop.sh`
+
+![](./img/Pasted%20image%20(11).png)
+
+* Run `./for_loop.sh`
+
+![](./img/Pasted%20image%20(13).png)
+
+* while & loop. Executes a block of code as long as a specified condition is true.
+
+* Run `nano while_loop.sh`, add the script.
+
+```bash
+#!/bin/bash
+# Monitor disk usage and alert when it exceeds threshold
+threshold=90
+
+while true; do
+    disk_usage=$(df / | awk 'NR==2 {print $5}' | sed 's/%//')
+    
+    if [ "$disk_usage" -gt "$threshold" ]; then
+        echo "WARNING: Disk usage is ${disk_usage}%"
+        # Send alert email or notification
+        break
+    else
+        echo "Disk usage OK: ${disk_usage}%"
+    fi
+    
+    sleep 300  # Check every 5 minutes
+done
+```
+![](./img/Pasted%20image%20(14).png)
+
+* Run the script
+
+![](./img/Pasted%20image%20(15).png)
 
