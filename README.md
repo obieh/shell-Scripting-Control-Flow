@@ -123,7 +123,6 @@ do
 done
 # =====================================
 # while loop
-#!/bin/bash
 # Monitor disk usage and alert when it exceeds threshold
 threshold=90
 
@@ -140,6 +139,40 @@ while true; do
     
     sleep 300  # Check every 5 minutes
 done
+# ================================
+# until loop
+#!/bin/bash
+# Waiting for a server to respond
+
+echo "Server Ping Checker"
+echo "------------------"
+
+# Initialize our counter
+attempt=1
+max_attempts=5
+server="google.com"  # The server we want to ping
+
+echo "Checking if $server is responding..."
+
+# The until loop will run UNTIL the ping succeeds (exit status 0)
+until ping -c 1 $server &> /dev/null  # Try pinging once, hide output
+do
+    echo "Attempt $attempt: Server not responding..."
+    
+    # Check if we've reached maximum attempts
+    if [ $attempt -eq $max_attempts ]; then
+        echo "Error: Server did not respond after $max_attempts attempts"
+        exit 1
+    fi
+    
+    sleep 2  # Wait 2 seconds before trying again
+    ((attempt++))  # Increase attempt counter by 1
+done
+
+# This line only runs if the until condition becomes true (ping succeeded)
+echo "Success! $server is now responding."
+
+exit 0
 
 ```
 * Create a script for 'for' loop. Give user execute permission and execute script.
@@ -180,4 +213,51 @@ done
 * Run the script
 
 ![](./img/Pasted%20image%20(15).png)
+
+* Until loop executes until a specified condition is true. Usually the condition is  enclosed in square brackets.
+
+* Create until_loop.sh, run `nano until_loop.sh`
+
+```bash
+#!/bin/bash
+# Waiting for a server to respond
+
+echo "Server Ping Checker"
+echo "------------------"
+
+# Initialize our counter
+attempt=1
+max_attempts=5
+server="google.com"  # The server we want to ping
+
+echo "Checking if $server is responding..."
+
+# The until loop will run UNTIL the ping succeeds (exit status 0)
+until ping -c 1 $server &> /dev/null  # Try pinging once, hide output
+do
+    echo "Attempt $attempt: Server not responding..."
+    
+    # Check if we've reached maximum attempts
+    if [ $attempt -eq $max_attempts ]; then
+        echo "Error: Server did not respond after $max_attempts attempts"
+        exit 1
+    fi
+    
+    sleep 2  # Wait 2 seconds before trying again
+    ((attempt++))  # Increase attempt counter by 1
+done
+
+# This line only runs if the until condition becomes true (ping succeeded)
+echo "Success! $server is now responding."
+
+exit 0
+```
+
+![](./img/Pasted%20image%20(16).png)
+
+* Add execution right to user and run the script.
+
+![](./img/Pasted%20image%20(17).png)
+
+### Until script executed as desired.
 
