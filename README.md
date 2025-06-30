@@ -103,4 +103,8 @@ fi
 ### The second condition was met and the script executed as desired.
 
 ## Loops
-Loops provides for the iteration of list od items or range of numbers.
+### Loops provides for the execution of code block repeatedly based on a condition. 
+
+### Bash have three types of loops 'for', 'while' and 'untill'
+
+* For Loop: for loops iterate of over list of items or range of numbers.
