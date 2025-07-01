@@ -158,73 +158,62 @@ echo "----------------------------"
 
 ```bash
 #!/bin/bash
-# Monitor disk usage and alert when it exceeds threshold
-threshold=90
+# Author: ObieShenk
+# Date: Date: $(date +%Y-%m-%d)
+# Simple Number Looping Script
+# This script demonstrates a basic for loop that:
+# 1. Counts from 1 to 5
+# 2. Prints a message for each number
 
-while true; do
-    disk_usage=$(df / | awk 'NR==2 {print $5}' | sed 's/%//')
+echo "-----------------------"
+
+# The main for loop
+for i in {1..5}  # This generates numbers from 1 to 5
+do
+    # Print the message with the current number
+    echo "Processing number $i"
     
-    if [ "$disk_usage" -gt "$threshold" ]; then
-        echo "WARNING: Disk usage is ${disk_usage}%"
-        # Send alert email or notification
-        break
-    else
-        echo "Disk usage OK: ${disk_usage}%"
-    fi
-    
-    sleep 300  # Check every 5 minutes
 done
+
+echo "-----------------------"
+
 ```
-![](./img/Pasted%20image%20(14).png)
+![](./img/Pasted%20image%20(20).png)
 
-* Run the script
+* Run the script, after add execute permission to user.
 
-![](./img/Pasted%20image%20(15).png)
+![](./img/Pasted%20image%20(21).png)
 
-* Until loop executes until a specified condition is true. Usually the condition is  enclosed in square brackets.
+* C-Style loop. Allows you to declare initializer, condition and expression  based on Clanguage syntax
 
-* Create until_loop.sh, run `nano until_loop.sh`
+* Create c_style_loop.sh, run `nano c_style_loop.sh`, and add the script block below
 
 ```bash
 #!/bin/bash
-# Waiting for a server to respond
+#!/bin/bash
+# Author: ObieShenk
+# Date: Date: $(date +%Y-%m-%d)
+# C-style for loop demonstration
 
-echo "Server Ping Checker"
-echo "------------------"
+echo "---------------------"
 
-# Initialize our counter
-attempt=1
-max_attempts=5
-server="google.com"  # The server we want to ping
-
-echo "Checking if $server is responding..."
-
-# The until loop will run UNTIL the ping succeeds (exit status 0)
-until ping -c 1 $server &> /dev/null  # Try pinging once, hide output
+# C-style for loop syntax:
+# for ((initialization; condition; increment))
+for (( i=0; i<=5; i++ ))
 do
-    echo "Attempt $attempt: Server not responding..."
-    
-    # Check if we've reached maximum attempts
-    if [ $attempt -eq $max_attempts ]; then
-        echo "Error: Server did not respond after $max_attempts attempts"
-        exit 1
-    fi
-    
-    sleep 2  # Wait 2 seconds before trying again
-    ((attempt++))  # Increase attempt counter by 1
+    # Print the current number with a message
+    echo "Count: $i - Hello from the loop!"
 done
 
-# This line only runs if the until condition becomes true (ping succeeded)
-echo "Success! $server is now responding."
+echo "---------------------"
 
-exit 0
 ```
 
-![](./img/Pasted%20image%20(16).png)
+![](./img/Pasted%20image%20(22).png)
 
 * Add execution right to user and run the script.
 
-![](./img/Pasted%20image%20(17).png)
+![](./img/Pasted%20image%20(23).png)
 
-### Until script executed as desired.
+### C-style script executed as desired.
 
