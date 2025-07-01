@@ -7,7 +7,7 @@ Control flow in shell scripting allows you to direct the execution path of your 
 ### If-Else Statements.
 * The if-else construct allows conditional execution based on test conditions.
 
-* Create a script named control_flow.sh. Run `nano control_flow.sh`
+* Create a script named check_number.sh. Run `check_number.sh`
 
 * Add the line below to the script and save.
 ```bash
@@ -16,13 +16,13 @@ read -p "Enter a number: " num
 ```
 ![](./img/Pasted%20image.png)
 
-* List the working directory to see script file permision. Run `chmod +x control_flow.sh` to add execute right to user.
+* List the working directory to see script file permision. Run `chmod +x check_number.sh` to add execute right to user.
 
-![](./img/Pasted%20image%20(3).png)
+![](./img/Pasted%20image%20(25).png)
 
-* Run `./control_flow.sh` to execute the script.
+* Run `./check_number.sh` to execute the script.
 
-![](./img/Pasted%20image%20(4).png)
+![](./img/Pasted%20image%20(26).png)
 
 ### script executed without without error.
 
@@ -39,7 +39,7 @@ echo "You have entered the number $num"
 
 ### Execute the script again to see the result of the changes made. $num in the script will display whatever was saved to 'num' variable.
 
-![](./img/Pasted%20image%20(6).png)
+![](./img/Pasted%20image%20(28).png)
 
 ## If-Else statement.
 ### The if-else construct allows conditional execution based on test conditions. Example syntax:
@@ -53,8 +53,8 @@ fi
 ```
 * The 'if' keyword begins the conditinal statement. The condition is enclosed in sqaure brackets [ ]. The 'else' keyword intruduces the alternative block and the statement ends with 'fi' which is 'if' spelt backward, marking the end of the if block.
 
-* Add if-else block to the control_flow.sh
-* Run `nano control_flow.sh`
+* Add if-else block to the check_number.sh
+* Run `nano check_number.sh`
 * Add the following code block to the script
 
 ```bash
@@ -62,7 +62,7 @@ if [ $num -gt 0 ]; then
     echo "The number is positive."
 fi
 ```
-![](./img/Pasted%20image%20(7).png)
+![](./img/Pasted%20image%20(29).png)
                  
 ### `$num` will reference the value of the variable 'num' entered by the user.
 
@@ -70,13 +70,14 @@ fi
 
 ### Lets run the code to see the result.
 
-![](./img/Pasted%20image%20(8).png)
+![](./img/Pasted%20image%20(30).png)
 
 ### And indeed the conditional block executed properly as desired.
 
 ### `elif` statement is used to check for multiple conditions in the script. It is actaully a combination of 'else and if' keywords'
 
 ```bash
+#!/bin/bash
 read -p "Enter a number: " num
 if [ $num -gt 0 ] 
 then
@@ -95,13 +96,25 @@ fi
 
 ### Add the elif block
 
-![](./img/Pasted%20image%20(9).png)
+![](./img/Pasted%20image%20(31).png)
 
 ### Run the script, this time enter a number lower than zero.
 
-![](./img/Pasted%20image%20(10).png)
+![](./img/Pasted%20image%20(32).png)
 
 ### The second condition was met and the script executed as desired.
+
+### Add input Validation to our script.
+
+* Run `nano check_number.sh`
+
+![](./img/Pasted%20image%20(33).png)
+
+* Run the script again, enter non valid input (alphabeth) and observe output.
+
+![](./img/Pasted%20image%20(34).png)
+
+### Our script perfoms as desired, the input validation worked well.
 
 ## Loops
 ### Loops provides for the execution of code block repeatedly based on a condition. 
@@ -133,8 +146,6 @@ done
 # Define a list of names
 names=("Alice" "Bob" "Charlie" "Diana" "Eve" "Obieshenk")
 
-echo "----------------------------"
-
 # Loop through each name in the list
 for name in "${names[@]}"  # The [@] means "all elements in the array"
 do
@@ -142,8 +153,6 @@ do
     echo "Hello, $name! Nice to meet you!"
     
 done
-
-echo "----------------------------"
 ```
 
 ![](./img/Pasted%20image%20(18).png)
@@ -154,7 +163,7 @@ echo "----------------------------"
 
 * while & loop. Executes a block of code as long as a specified condition is true.
 
-* Run `nano while_loop.sh`, add the script.
+* Run `nano loop_range.sh`, add the script.
 
 ```bash
 #!/bin/bash
@@ -165,8 +174,6 @@ echo "----------------------------"
 # 1. Counts from 1 to 5
 # 2. Prints a message for each number
 
-echo "-----------------------"
-
 # The main for loop
 for i in {1..5}  # This generates numbers from 1 to 5
 do
@@ -174,9 +181,6 @@ do
     echo "Processing number $i"
     
 done
-
-echo "-----------------------"
-
 ```
 ![](./img/Pasted%20image%20(20).png)
 
@@ -195,7 +199,6 @@ echo "-----------------------"
 # Date: Date: $(date +%Y-%m-%d)
 # C-style for loop demonstration
 
-echo "---------------------"
 
 # C-style for loop syntax:
 # for ((initialization; condition; increment))
@@ -204,9 +207,6 @@ do
     # Print the current number with a message
     echo "Count: $i - Hello from the loop!"
 done
-
-echo "---------------------"
-
 ```
 
 ![](./img/Pasted%20image%20(22).png)
