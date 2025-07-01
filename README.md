@@ -44,12 +44,11 @@ echo "You have entered the number $num"
 ## If-Else statement.
 ### The if-else construct allows conditional execution based on test conditions. Example syntax:
 ```bash
-number = 10
-if [ number -lt 10 ] 
+read -p "Enter a number:" num
+echo "You have entered the number $num"
+if [ $num -gt 0 ] 
 then
-    echo "number is lesser than 10"
-else 
-    echo "number is greater or equal to 10"
+    echo "The number is positive"
 fi
 ```
 * The 'if' keyword begins the conditinal statement. The condition is enclosed in sqaure brackets [ ]. The 'else' keyword intruduces the alternative block and the statement ends with 'fi' which is 'if' spelt backward, marking the end of the if block.
@@ -78,13 +77,15 @@ fi
 ### `elif` statement is used to check for multiple conditions in the script. It is actaully a combination of 'else and if' keywords'
 
 ```bash
-number = 10
-if [ number -lt 10 ] 
+read -p "Enter a number: " num
+if [ $num -gt 0 ] 
 then
-    echo "number is lesser than 10"
-elif [ number -ge 10 ] 
+    echo "The number is positive"
+elif [ $num -lt 10 ] 
 then
-    echo "number is greater or equal to 10"
+    echo "The number is negative"
+else
+    echo "The number is zero"
 fi
 ```
 
@@ -92,7 +93,7 @@ fi
 
 * If the initial condition is not met then the script moves further to check for the secod condition `elif [ $num -lt 0 ]`.
 
-### Add the eilf block
+### Add the elif block
 
 ![](./img/Pasted%20image%20(9).png)
 
@@ -112,78 +113,44 @@ fi
 ```bash
 #!/bin/bash
 
-# Simple for loop to print numbers 1 through 5
-
-echo "Counting from 1 to 5:"
-
-# Loop from 1 to 5
-for i in 1 2 3 4 5  # 'i' takes each value in this list
+for i in 1 2 3 4 5
 do
-    echo "Number: $i"  # Print the current number
+    echo "Hello, World! This is message $i"
 done
-# =====================================
-# while loop
-# Monitor disk usage and alert when it exceeds threshold
-threshold=90
-
-while true; do
-    disk_usage=$(df / | awk 'NR==2 {print $5}' | sed 's/%//')
-    
-    if [ "$disk_usage" -gt "$threshold" ]; then
-        echo "WARNING: Disk usage is ${disk_usage}%"
-        # Send alert email or notification
-        break
-    else
-        echo "Disk usage OK: ${disk_usage}%"
-    fi
-    
-    sleep 300  # Check every 5 minutes
-done
-# ================================
-# until loop
-#!/bin/bash
-# Waiting for a server to respond
-
-echo "Server Ping Checker"
-echo "------------------"
-
-# Initialize our counter
-attempt=1
-max_attempts=5
-server="google.com"  # The server we want to ping
-
-echo "Checking if $server is responding..."
-
-# The until loop will run UNTIL the ping succeeds (exit status 0)
-until ping -c 1 $server &> /dev/null  # Try pinging once, hide output
-do
-    echo "Attempt $attempt: Server not responding..."
-    
-    # Check if we've reached maximum attempts
-    if [ $attempt -eq $max_attempts ]; then
-        echo "Error: Server did not respond after $max_attempts attempts"
-        exit 1
-    fi
-    
-    sleep 2  # Wait 2 seconds before trying again
-    ((attempt++))  # Increase attempt counter by 1
-done
-
-# This line only runs if the until condition becomes true (ping succeeded)
-echo "Success! $server is now responding."
-
-exit 0
 
 ```
 * Create a script for 'for' loop. Give user execute permission and execute script.
 
-* Run `nano for_loop.sh`
+* Run `nano loop_list.sh` add the below script commands
+```bash
+#!/bin/bash
+# Author: ObieShenk
+# Date: Date: $(date +%Y-%m-%d)
+# Simple Greeting Script
+# This script demonstrates how to loop through a list of names
+# and print customized greetings for each one
 
-![](./img/Pasted%20image%20(11).png)
+# Define a list of names
+names=("Alice" "Bob" "Charlie" "Diana" "Eve" "Obieshenk")
 
-* Run `./for_loop.sh`
+echo "----------------------------"
 
-![](./img/Pasted%20image%20(13).png)
+# Loop through each name in the list
+for name in "${names[@]}"  # The [@] means "all elements in the array"
+do
+    # Print a personalized greeting
+    echo "Hello, $name! Nice to meet you!"
+    
+done
+
+echo "----------------------------"
+```
+
+![](./img/Pasted%20image%20(18).png)
+
+* Run `./loop_list.sh` after giving user execution rights.
+
+![](./img/Pasted%20image%20(19).png)
 
 * while & loop. Executes a block of code as long as a specified condition is true.
 
