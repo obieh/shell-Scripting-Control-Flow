@@ -6,7 +6,6 @@
 # 1. Counts from 1 to 5
 # 2. Prints a message for each number
 
-echo "-----------------------"
 
 # The main for loop
 for i in {1..5}  # This generates numbers from 1 to 5
@@ -16,5 +15,5 @@ do
     
 done
 
-echo "-----------------------"
+
 
